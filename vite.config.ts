@@ -1,8 +1,13 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
 
-// https://vite.dev/config/
+const webbasepath = process.env.WEBBASEPATH || '/';
+
 export default defineConfig({
-  base: '/ylang.dev/',
-  plugins: [react()],
+  plugins: [react(), tailwindcss()],
+  base: webbasepath,
+  define: {
+    _WEB_BASE_PATH_ : JSON.stringify(webbasepath),
+  },
 })
