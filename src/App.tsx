@@ -3,7 +3,7 @@ import './App.css'
 import SiteHeader from './components/SiteHeader'
 import Home from './pages/Home'
 import About from './pages/About'
-import Learn from './pages/Learn'
+import Learn from './pages/Learn/Learn'
 import Reference from './pages/Reference'
 import Download from './pages/Download'
 
@@ -20,7 +20,7 @@ export default function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/learn" element={<Learn />} />
+                <Route path="/learn/*" element={<Learn />} />
                 <Route path="/reference" element={<Reference />} />
                 <Route path="/download" element={<Download />} />
               </Routes>
