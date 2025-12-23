@@ -65,7 +65,7 @@ export default function Sidebar({sidebarProps}:{sidebarProps:SidebarProps}) {
         />
       )}
 
-      <aside className={`z-50 bg-gray-100 text-gray-800 p-4 border-r border-gray-300 dark:bg-gray-900 dark:text-gray-100 dark:border-gray-700 transform transition-transform duration-100 ${isOverlaySidebarOpen ? "translate-x-0" : "-translate-x-full"}`}>
+      <aside className={`fixed h-screen w-64 z-50 bg-gray-100 text-gray-800 p-4 border-r border-gray-300 dark:bg-gray-900 dark:text-gray-100 dark:border-gray-700 transform transition-transform duration-100 ${isOverlaySidebarOpen ? "translate-x-0" : "-translate-x-full"}`}>
         <SidebarContent menu={sidebarProps.menu} onItemClick={() => setIsOverlaySidebarOpen(false)} />
       </aside>
     </>

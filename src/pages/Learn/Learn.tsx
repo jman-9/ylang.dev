@@ -2,7 +2,7 @@ import construction from '/construction-kid-3.svg'
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { CursorGlowBlackButton } from "../../ui/CursorGlowBlackButton";
 import RoundedButton from "../../ui/RoundedButton";
-import Sidebar, { type Menu, type MenuItem, type SidebarProps } from '../../components/Sidebar';
+import Sidebar, { type Menu, type MenuItem } from '../../components/Sidebar';
 import QuickStart from './QuickStart';
 
 const menuItems: MenuItem[] = [
