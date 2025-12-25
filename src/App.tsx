@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import './App.css'
 import SiteHeader from './components/SiteHeader'
 import Home from './pages/Home'
@@ -6,15 +6,33 @@ import About from './pages/About'
 import Learn from './pages/Learn/Learn'
 import Reference from './pages/Reference'
 import Download from './pages/Download'
+import { useEffect, useRef } from "react";
 
 const webBasePath = typeof _WEB_BASE_PATH_ === "string" && _WEB_BASE_PATH_.length > 0 ? _WEB_BASE_PATH_ : "/";
 
+function ScrollToTop({scrollRef}: {scrollRef: React.RefObject<HTMLElement | null>}) {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    scrollRef?.current?.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "auto",
+    });
+  }, [pathname]);
+
+  return null;
+}
+
 export default function App() {
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+
   return (
     <BrowserRouter basename={webBasePath}>
       <div className="h-screen flex flex-1 flex-col overflow-hidden dark:bg-gray-950 dark:text-gray-100">
         <SiteHeader />
-        <div className="overflow-auto flex-1 min-h-0">
+        <ScrollToTop scrollRef={scrollRef} />
+        <div ref={scrollRef} className="overflow-auto flex-1 min-h-0">
           <div className="min-h-full min-w-0 max-w-7xl mx-auto px-4 flex flex-1 flex-col ">
             <main className="flex-1">
               <Routes>
