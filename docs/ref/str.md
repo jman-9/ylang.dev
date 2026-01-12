@@ -1,10 +1,10 @@
 # str — String operations
 
-The `str` module provides methods for string manipulation. All string methods are called on string objects using the dot operator.
+The `str` module provides functions for string manipulation. All string functions are called on string objects using the dot operator.
 
-## Methods
+## Functions
 
-| Method | Description |
+| Function | Description |
 |--------|-------------|
 | [`empty()`](#empty) | Returns `true` if the string is empty, `false` otherwise |
 | [`size()`](#size) | Returns the length of the string |

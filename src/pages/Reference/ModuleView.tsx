@@ -33,8 +33,23 @@ export default function ModuleView({ moduleName }: ModuleViewProps) {
 
   useEffect(() => {
     // 동적으로 모듈 markdown 파일 로드
-    if (moduleName === "str") {
-      import("/docs/ref/str.md?raw")
+    const moduleMap: Record<string, () => Promise<{ default: string }>> = {
+      str: () => import("/docs/ref/str.md?raw"),
+      list: () => import("/docs/ref/list.md?raw"),
+      dict: () => import("/docs/ref/dict.md?raw"),
+      math: () => import("/docs/ref/math.md?raw"),
+      rand: () => import("/docs/ref/rand.md?raw"),
+      sys: () => import("/docs/ref/sys.md?raw"),
+      file: () => import("/docs/ref/file.md?raw"),
+      json: () => import("/docs/ref/json.md?raw"),
+      time: () => import("/docs/ref/time.md?raw"),
+      shell: () => import("/docs/ref/shell.md?raw"),
+      fs: () => import("/docs/ref/fs.md?raw"),
+    };
+
+    const loader = moduleMap[moduleName];
+    if (loader) {
+      loader()
         .then((m) => setModuleContent(m.default))
         .catch(() => setModuleContent(`# Module Not Found\n\nModule "${moduleName}" documentation is not available.`));
     } else {
