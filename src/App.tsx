@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import './App.css'
 import SiteHeader from './components/SiteHeader'
 import Home from './pages/Home'
@@ -24,11 +24,28 @@ function ScrollToTop({scrollRef}: {scrollRef: React.RefObject<HTMLElement | null
   return null;
 }
 
+function RedirectHandler() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const redirect = params.get("redirect");
+
+    if (redirect) {
+      navigate(redirect, { replace: true });
+    }
+  }, []);
+
+  return null;
+}
+
 export default function App() {
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
   return (
     <BrowserRouter basename={webBasePath}>
+      <RedirectHandler />
       <div className="h-screen flex flex-1 flex-col overflow-hidden dark:bg-gray-950 dark:text-gray-100">
         <SiteHeader />
         <ScrollToTop scrollRef={scrollRef} />
