@@ -9,14 +9,15 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-
     "build:github": "cross-env WEBBASEPATH=/ylang.dev/ tsc -b && cross-env WEBBASEPATH=/ylang.dev/ vite build",
     "predeploy": "pnpm run build:github",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

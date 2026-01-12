@@ -4,7 +4,7 @@ import SiteHeader from './components/SiteHeader'
 import Home from './pages/Home'
 import About from './pages/About'
 import Learn from './pages/Learn/Learn'
-import Reference from './pages/Reference'
+import Reference from './pages/Reference/Reference'
 import Download from './pages/Download'
 import { useEffect, useRef } from "react";
 
@@ -56,7 +56,7 @@ export default function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/learn/*" element={<Learn />} />
-                <Route path="/reference" element={<Reference />} />
+                <Route path="/reference/*" element={<Reference />} />
                 <Route path="/download" element={<Download />} />
               </Routes>
             </main>
