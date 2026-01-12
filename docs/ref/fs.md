@@ -13,8 +13,7 @@ The `fs` module provides functions for file system operations.
 | Function | Description |
 |----------|-------------|
 | [`exists(path)`](#existspath) | Checks if a file or directory exists |
-| [`cwd()`](#cwd) | Returns the current working directory |
-| [`cwd(path)`](#cwdpath) | Changes the current working directory |
+| [`cwd([path])`](#cwd-path) | Returns the current working directory, or changes it if `path` is provided |
 | [`abspath(path)`](#abspathpath) | Returns the absolute path of a file or directory |
 | [`readdir(path)`](#readdirpath) | Returns a list of entries in the specified directory |
 
@@ -39,12 +38,16 @@ if (fs.exists("data.txt")) {
 }
 ```
 
-### cwd()
+### cwd([path])
 
-Returns the current working directory.
+Returns the current working directory, or changes it if `path` is provided.
+
+**Parameters:**
+- `path` (`str`, optional): The directory path to change to
 
 **Returns:**
-- `str`: The current working directory path
+- `str`: The current working directory path (if no `path` is provided)
+- `bool`: `true` on success, `false` on failure (if `path` is provided)
 
 **Example:**
 
@@ -52,22 +55,7 @@ Returns the current working directory.
 include fs;
 current_dir = fs.cwd();
 println(current_dir);
-```
 
-### cwd(path)
-
-Changes the current working directory to the specified path.
-
-**Parameters:**
-- `path` (`str`): The directory path to change to
-
-**Returns:**
-- `bool`: `true` on success, `false` on failure
-
-**Example:**
-
-```ylang
-include fs;
 fs.cwd("/home/user");
 println(fs.cwd());  // "/home/user"
 ```
@@ -113,6 +101,16 @@ for (i = 0; i < entries.size(); i += 1) {
 ## path Submodule
 
 The `fs.path` submodule provides path manipulation functions.
+
+### Functions
+
+| Function | Description |
+|----------|-------------|
+| [`fs.path.join(...)`](#fspathjoin) | Joins multiple path components into a single path |
+| [`fs.path.parent(path)`](#fspathparentpath) | Returns the parent directory of the specified path |
+| [`fs.path.name(path)`](#fspathnamepath) | Returns the filename (with extension) from the specified path |
+| [`fs.path.stem(path)`](#fspathstempath) | Returns the filename without the extension |
+| [`fs.path.ext(path)`](#fspathextpath) | Returns the file extension (including the dot) |
 
 ### fs.path.join(...)
 

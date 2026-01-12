@@ -6,9 +6,9 @@ The `sys` module provides access to system-specific parameters and functions.
 
 | Variable | Description |
 |----------|-------------|
-| `version` | The ylang version string |
-| `executable` | The path to the ylang executable |
-| `args` | A list of command-line arguments passed to the program |
+| [`version`](#version) | The ylang version string |
+| [`executable`](#executable) | The path to the ylang executable |
+| [`args`](#args) | A list of command-line arguments passed to the program |
 
 ## Functions
 
@@ -18,7 +18,7 @@ The `sys` module provides access to system-specific parameters and functions.
 | [`getenv(name)`](#getenvname) | Returns the value of the environment variable `name` |
 | [`setenv(name, value)`](#setenvname-value) | Sets the environment variable `name` to `value` |
 
-### version
+### .version
 
 The ylang version string.
 
@@ -29,7 +29,7 @@ include sys;
 println(sys.version);  // e.g., "ylang 1.0.0"
 ```
 
-### executable
+### .executable
 
 The path to the ylang executable.
 
@@ -40,7 +40,7 @@ include sys;
 println(sys.executable);  // e.g., "/usr/bin/ylang"
 ```
 
-### args
+### .args
 
 A list of command-line arguments passed to the program (excluding the program name itself).
 

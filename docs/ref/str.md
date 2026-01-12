@@ -8,13 +8,10 @@ The `str` module provides functions for string manipulation. All string function
 |--------|-------------|
 | [`empty()`](#empty) | Returns `true` if the string is empty, `false` otherwise |
 | [`size()`](#size) | Returns the length of the string |
-| [`find(substr)`](#findsubstr) | Searches for the first occurrence of a substring |
-| [`find(start, substr)`](#findstart-substr) | Searches for a substring starting from a specified position |
-| [`substr(start)`](#substrstart) | Returns a substring starting from the specified position to the end |
-| [`substr(start, length)`](#substrstart-length) | Returns a substring of specified length starting from the specified position |
+| [`find([start, ]substr)`](#find-start-substr) | Searches for a substring. If `start` is provided, searches from that position |
+| [`substr(start[, length])`](#substrstart-length) | Returns a substring. If `length` is provided, returns that many characters; otherwise returns to the end |
 | [`replace(old, new)`](#replaceold-new) | Replaces all occurrences of `old` substring with `new` substring |
-| [`split()`](#split) | Splits the string by whitespace characters and returns a list |
-| [`split(delimiter)`](#splitdelimiter) | Splits the string by the specified delimiter and returns a list |
+| [`split([delimiter])`](#split-delimiter) | Splits the string. If `delimiter` is provided, splits by that delimiter; otherwise splits by whitespace |
 | [`trim()`](#trim) | Removes leading and trailing whitespace characters |
 | [`ltrim()`](#ltrim) | Removes leading whitespace characters |
 | [`rtrim()`](#rtrim) | Removes trailing whitespace characters |
@@ -58,12 +55,13 @@ b = "ylang";
 println(b.size());  // 5
 ```
 
-### find(substr)
+### find([start, ]substr)
 
-Searches for the first occurrence of a substring in the string.
+Searches for a substring in the string. If `start` is provided, searches from that position; otherwise searches from the beginning.
 
 **Parameters:**
-- `substr` (string): The substring to search for
+- `start` (`int`, optional): The position to start searching from
+- `substr` (`str`): The substring to search for
 
 **Returns:**
 - `int`: The position of the first occurrence, or `-1` if not found
@@ -74,57 +72,28 @@ Searches for the first occurrence of a substring in the string.
 a = "hello world";
 println(a.find("world"));  // 6
 println(a.find("ylang"));  // -1
-```
 
-### find(start, substr)
-
-Searches for a substring starting from a specified position.
-
-**Parameters:**
-- `start` (int): The position to start searching from
-- `substr` (string): The substring to search for
-
-**Returns:**
-- `int`: The position of the first occurrence, or `-1` if not found
-
-**Example:**
-
-```ylang
 a = "a b c d t";
 println(a.find(3, " c d"));  // 3
 ```
 
-### substr(start)
+### substr(start[, length])
 
-Returns a substring starting from the specified position to the end of the string.
+Returns a substring starting from the specified position. If `length` is provided, returns that many characters; otherwise returns from `start` to the end of the string.
 
 **Parameters:**
-- `start` (int): The starting position
+- `start` (`int`): The starting position
+- `length` (`int`, optional): The length of the substring
 
 **Returns:**
-- `string`: The substring from `start` to the end
+- `str`: The substring
 
 **Example:**
 
 ```ylang
 a = "hello world";
 println(a.substr(6));  // "world"
-```
 
-### substr(start, length)
-
-Returns a substring of specified length starting from the specified position.
-
-**Parameters:**
-- `start` (int): The starting position
-- `length` (int): The length of the substring
-
-**Returns:**
-- `string`: The substring
-
-**Example:**
-
-```ylang
 a = "pika pika chu";
 println(a.substr(5, 4));   // "pika"
 println(a.substr(0, 4));   // "pika"
@@ -152,12 +121,15 @@ c = "apple apple apple";
 println(c.replace("apple", "banana"));  // "banana banana banana"
 ```
 
-### split()
+### split([delimiter])
 
-Splits the string by whitespace characters (space, tab, newline, etc.) and returns a list of substrings.
+Splits the string and returns a list. If `delimiter` is provided, splits by that delimiter; otherwise splits by whitespace characters (space, tab, newline, etc.).
+
+**Parameters:**
+- `delimiter` (`str`, optional): The delimiter string
 
 **Returns:**
-- `list`: A list of strings split by whitespace
+- `list`: A list of substrings
 
 **Example:**
 
@@ -165,21 +137,7 @@ Splits the string by whitespace characters (space, tab, newline, etc.) and retur
 a = "a b   c d";
 result = a.split();
 println(result);  // ["a", "b", "c", "d"]
-```
 
-### split(delimiter)
-
-Splits the string by the specified delimiter and returns a list of substrings.
-
-**Parameters:**
-- `delimiter` (string): The delimiter string
-
-**Returns:**
-- `list`: A list of strings split by the delimiter
-
-**Example:**
-
-```ylang
 a = "apple,banana,,grape";
 result = a.split(",");
 println(result);  // ["apple", "banana", "", "grape"]

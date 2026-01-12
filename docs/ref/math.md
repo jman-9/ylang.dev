@@ -6,7 +6,7 @@ The `math` module provides mathematical functions and variables.
 
 | Variable | Description |
 |----------|-------------|
-| `pi` | The mathematical constant π (approximately 3.14159) |
+| [`pi`](#pi) | The mathematical constant π (approximately 3.14159) |
 
 ## Functions
 
@@ -24,7 +24,7 @@ The `math` module provides mathematical functions and variables.
 | [`min(x, y)`](#minx-y) | Returns the minimum of `x` and `y` |
 | [`max(x, y)`](#maxx-y) | Returns the maximum of `x` and `y` |
 
-### pi
+### .pi
 
 The mathematical constant π (approximately 3.14159).
 

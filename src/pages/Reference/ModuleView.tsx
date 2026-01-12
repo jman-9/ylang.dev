@@ -59,11 +59,14 @@ export default function ModuleView({ moduleName }: ModuleViewProps) {
 
   // 코드 블록 하이라이팅
   useEffect(() => {
-    if (contentRef.current) {
-      const codeBlocks = contentRef.current.querySelectorAll('pre code');
-      codeBlocks.forEach((block) => {
-        Prism.highlightElement(block as HTMLElement);
-      });
+    if (contentRef.current && moduleContent) {
+      // ReactMarkdown 렌더링 후 하이라이팅을 위해 약간의 지연
+      setTimeout(() => {
+        const codeBlocks = contentRef.current?.querySelectorAll('pre code[class*="language-"]');
+        codeBlocks?.forEach((block) => {
+          Prism.highlightElement(block as HTMLElement);
+        });
+      }, 100);
     }
   }, [moduleContent]);
 
@@ -141,19 +144,39 @@ export default function ModuleView({ moduleName }: ModuleViewProps) {
           h1: ({node, ...props}) => (
             <h1 className="pt-2 mb-4 border-b-2 border-gray-300 dark:border-gray-700 pb-1" {...props} />
           ),
-          h2: ({node, ...props}) => <h2 className="pt-4 mb-3" {...props} />,
+          h2: ({node, children, ...props}) => {
+            const text = String(children);
+            const id = text.toLowerCase().replace(/\s+/g, '-'); // "path Submodule" -> "path-submodule"
+            return <h2 id={id} className="pt-4 mb-3" {...props}>{children}</h2>;
+          },
           h3: ({node, children, ...props}) => {
             // 함수명인지 확인 (괄호가 포함되어 있으면 함수명)
             const text = String(children);
             const isFunction = text.includes('(') && text.includes(')');
 
+            // 앞에 점(.)으로 시작하면 변수로 인식
+            const isVariable = !isFunction && text.startsWith('.');
+
+            // 표시할 텍스트에서 앞의 점 제거
+            const displayText = isVariable ? text.substring(1) : text;
+
             if (isFunction) {
               // 함수명에서 id 생성 (테이블 링크 형식과 맞춤)
               // 예: "empty()" -> "empty", "find(start, substr)" -> "findstart-substr"
+              // "dump(obj [, indent])" -> "dumpobj-indent"
+              // "fs.path.join(...)" -> "fspathjoin"
               const id = text
+                .replace(/\[\s*([^\]]*?)\s*\]/g, (_match, content) => {
+                  // 대괄호 안의 내용이 있으면 쉼표와 함께 제거, 없으면 그냥 제거
+                  return content ? `, ${content}` : '';
+                })  // 대괄호 제거하고 내용을 쉼표로 연결
                 .replace(/[()]/g, '')  // 괄호 제거
+                .replace(/\./g, '')  // 점(.) 제거 (서브모듈 함수명 처리)
+                .replace(/\.\.\./g, '')  // ... 제거
                 .replace(/,\s*/g, '-')  // 쉼표와 공백을 하이픈으로
                 .replace(/\s+/g, '-')  // 나머지 공백을 하이픈으로
+                .replace(/-+/g, '-')  // 연속된 하이픈을 하나로
+                .replace(/^-|-$/g, '')  // 앞뒤 하이픈 제거
                 .toLowerCase();
               return (
                 <h3 id={id} className="mt-8 mb-3 font-mono text-lg font-semibold bg-gray-100 dark:bg-gray-800 px-3 py-2 rounded border-l-4 border-cyan-500 scroll-mt-4" {...props}>
@@ -161,7 +184,22 @@ export default function ModuleView({ moduleName }: ModuleViewProps) {
                 </h3>
               );
             }
-            return <h3 className="pt-8 mb-2" {...props}>{children}</h3>;
+
+            // variable이나 다른 h3 헤딩에도 id 생성 (소문자, 공백을 하이픈으로)
+            // displayText는 이미 점이 제거된 상태
+            const cleanText = displayText.replace(/\s+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '').toLowerCase();
+            const id = cleanText;
+
+            if (isVariable) {
+              // 변수는 함수와 비슷한 스타일이지만 다른 색상의 border 사용
+              return (
+                <h3 id={id} className="mt-8 mb-3 font-mono text-lg font-semibold bg-gray-100 dark:bg-gray-800 px-3 py-2 rounded border-l-4 border-blue-500 scroll-mt-4" {...props}>
+                  {displayText}
+                </h3>
+              );
+            }
+
+            return <h3 id={id} className="pt-8 mb-2" {...props}>{children}</h3>;
           },
           p: ({node, ...props}) => <p className="mb-4" {...props} />,
           hr: ({node, ...props}) => <hr className="my-4 border-cyan-200 border-3" {...props} />,
@@ -186,8 +224,12 @@ export default function ModuleView({ moduleName }: ModuleViewProps) {
             const inline = !lang;
 
             if (!inline && lang) {
+              // ylang 언어를 rust로 매핑 (Prism.js에 ylang이 없으므로)
+              const mappedLang = lang === 'ylang' ? 'rust' : lang;
+              const mappedClassName = className?.replace(`language-${lang}`, `language-${mappedLang}`) || `language-${mappedLang}`;
+
               return (
-                <code className={className} {...props}>
+                <code className={mappedClassName} {...props}>
                   {children}
                 </code>
               );
@@ -203,7 +245,7 @@ export default function ModuleView({ moduleName }: ModuleViewProps) {
           ),
           table: ({node, ...props}) => (
             <div className="overflow-x-auto mb-4">
-              <table className="min-w-full border-collapse border border-gray-300 dark:border-gray-700" {...props} />
+              <table className="min-w-full border-collapse border border-gray-300 dark:border-gray-700 [&_td:first-child]:whitespace-nowrap" {...props} />
             </div>
           ),
           thead: ({node, ...props}) => (
@@ -246,12 +288,12 @@ export default function ModuleView({ moduleName }: ModuleViewProps) {
                       });
                     }
                   }}
-                  className="text-blue-600 dark:text-blue-400 hover:underline"
+                  className="text-slate-700 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors duration-200 underline-offset-2 hover:underline decoration-1"
                   {...props}
                 />
               );
             }
-            return <a href={href} className="text-blue-600 dark:text-blue-400 hover:underline" {...props} />;
+            return <a href={href} className="text-slate-700 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors duration-200 underline-offset-2 hover:underline decoration-1" {...props} />;
           },
         }}
       >
