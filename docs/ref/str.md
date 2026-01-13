@@ -20,6 +20,7 @@ The `str` module provides functions for string manipulation. All string function
 | [`ends_with(str)`](#ends_withstr) | Checks if the string ends with the specified substring |
 | [`toupper()`](#toupper) | Converts all characters in the string to uppercase |
 | [`tolower()`](#tolower) | Converts all characters in the string to lowercase |
+| [`to_int([base])`](#to_int-base) | Converts the string to an integer. If `base` is provided, interprets the string in that base (0, 2-36); otherwise uses base 10. Base 0 auto-detects the base from the string prefix |
 
 ### empty()
 
@@ -273,4 +274,24 @@ Converts all characters in the string to lowercase.
 ```ylang
 a = "Hello World";
 println(a.tolower());  // "hello world"
+```
+
+### to_int([base])
+
+Converts the string to an integer. If `base` is provided, interprets the string in that base (0, 2-36); otherwise uses base 10. When `base` is 0, the base is automatically detected from the string prefix: `0x` or `0X` for hexadecimal, `0` for octal, otherwise decimal.
+
+**Parameters:**
+- `base` (`int`, optional): The base for interpretation (0, 2-36). Defaults to 10 if not provided. If 0, auto-detects the base from the string prefix.
+
+**Returns:**
+- `int`: The integer value of the string
+
+**Example:**
+
+```ylang
+println("123".to_int());      // 123 (base 10, default)
+println("ef".to_int(16));      // 239 (base 16)
+println("1010".to_int(2));     // 10 (base 2)
+println("073".to_int(0));      // 59 (base 0, auto-detects octal)
+println("0xFF".to_int(0));     // 255 (base 0, auto-detects hexadecimal)
 ```
