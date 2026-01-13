@@ -22,17 +22,17 @@ class Zoi {
     }
 
     fn prefer(p) {
-        for(i=0; i<_preferences.len(); i++)
+        for(i=0; i<_preferences.size(); i++)
             if(p == _preferences[i]) return true;
         return false;
     }
 }
 
 zois = [];
-zois.append(Zoi("Henry", Pos(9.8, 1.0, 2.0), ["Car", "Guitar"]));
-zois.append(Zoi("Walter", Pos(5.0, 2.0, 0.0), ["Sing", "Basketball"]));
+zois.push_back(Zoi("Henry", Pos(9.8, 1.0, 2.0), ["Car", "Guitar"]));
+zois.push_back(Zoi("Walter", Pos(5.0, 2.0, 0.0), ["Sing", "Basketball"]));
 
-for(i=0; i<zois.len(); i++) {
+for(i=0; i<zois.size(); i++) {
   if(zois[i].prefer("Basketball"))
     println("'{zois[i]._name}' like basketball.");
   else
@@ -129,8 +129,8 @@ line 2
 line 3
 """;
 
-n = str1.len();       // n <= 5
-m = "12345789".len(); // m <= 9
+n = str1.size();       // n <= 5
+m = "12345789".size(); // m <= 9
 `} />
 
     <h2 className='mt-12 mb-4'>Operators</h2>
