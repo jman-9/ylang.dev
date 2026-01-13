@@ -20,6 +20,7 @@ The \`str\` module provides functions for string manipulation. All string functi
 | [\`ends_with(str)\`](#ends_withstr) | Checks if the string ends with the specified substring |\r
 | [\`toupper()\`](#toupper) | Converts all characters in the string to uppercase |\r
 | [\`tolower()\`](#tolower) | Converts all characters in the string to lowercase |\r
+| [\`to_int([base])\`](#to_int-base) | Converts the string to an integer. If \`base\` is provided, interprets the string in that base (0, 2-36); otherwise uses base 10. Base 0 auto-detects the base from the string prefix |\r
 \r
 ### empty()\r
 \r
@@ -273,5 +274,25 @@ Converts all characters in the string to lowercase.\r
 \`\`\`ylang\r
 a = "Hello World";\r
 println(a.tolower());  // "hello world"\r
+\`\`\`\r
+\r
+### to_int([base])\r
+\r
+Converts the string to an integer. If \`base\` is provided, interprets the string in that base (0, 2-36); otherwise uses base 10. When \`base\` is 0, the base is automatically detected from the string prefix: \`0x\` or \`0X\` for hexadecimal, \`0\` for octal, otherwise decimal.\r
+\r
+**Parameters:**\r
+- \`base\` (\`int\`, optional): The base for interpretation (0, 2-36). Defaults to 10 if not provided. If 0, auto-detects the base from the string prefix.\r
+\r
+**Returns:**\r
+- \`int\`: The integer value of the string\r
+\r
+**Example:**\r
+\r
+\`\`\`ylang\r
+println("123".to_int());      // 123 (base 10, default)\r
+println("ef".to_int(16));      // 239 (base 16)\r
+println("1010".to_int(2));     // 10 (base 2)\r
+println("073".to_int(0));      // 59 (base 0, auto-detects octal)\r
+println("0xFF".to_int(0));     // 255 (base 0, auto-detects hexadecimal)\r
 \`\`\`\r
 `;export{r as default};
