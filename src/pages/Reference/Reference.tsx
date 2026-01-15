@@ -3,6 +3,7 @@ import Sidebar, { type Menu, type MenuItem } from '../../components/Sidebar';
 import ModuleView from './ModuleView';
 
 const menuItems: MenuItem[] = [
+    { label: "builtin functions", path: "/builtin-functions" },
     { label: "str", path: "/str" },
     { label: "list", path: "/list" },
     { label: "dict", path: "/dict" },
@@ -39,7 +40,8 @@ export default function Reference() {
         <Route path="/time" element={<ModuleView moduleName="time" />} />
         <Route path="/shell" element={<ModuleView moduleName="shell" />} />
         <Route path="/fs" element={<ModuleView moduleName="fs" />} />
-        <Route path="/" element={<ModuleView moduleName="str" />} />
+        <Route path="/builtin-functions" element={<ModuleView moduleName="builtin-functions" />} />
+        <Route path="/" element={<ModuleView moduleName="builtin-functions" />} />
       </Routes>
     </div>
   </div>

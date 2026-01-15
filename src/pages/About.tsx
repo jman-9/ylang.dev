@@ -88,6 +88,7 @@ export default function About() {
         <li>Control statements: if/for/break/continue/return</li>
         <li>Same operators as C (arithmetic, logical, bitwise, augmented assignments)</li>
         <li>Increment and decrement operators (++, --)</li>
+        <li>Ternary operator ( ? : )</li>
       </ul>
       <h3 className='pt-10 mb-2'>Pythonic</h3>
       <ul className='list-disc list-inside pl-4'>

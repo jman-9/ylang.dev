@@ -11,6 +11,7 @@ The `file` module provides functions for file I/O operations.
 | [`read(size)`](#readsize) | Reads up to `size` bytes from the file (called on file object) |
 | [`read_all(path)`](#read_allpath) | Reads the entire contents of a file |
 | [`write(data)`](#writedata) | Writes data to the file (called on file object) |
+| [`write_all(path, data)`](#write_allpath-data) | Writes data to a file, creating or overwriting it |
 
 ### open(path, mode)
 
@@ -85,6 +86,24 @@ Reads the entire contents of a file into a string.
 include file;
 content = file.read_all("data.txt");
 println(content);
+```
+
+### write_all(path, data)
+
+Writes data to a file, creating the file if it doesn't exist or overwriting it if it does. This is a convenience function that opens, writes, and closes the file in one operation.
+
+**Parameters:**
+- `path` (`str`): The path to the file
+- `data` (`str`): The data to write to the file
+
+**Returns:**
+- `int`: Error code (0 on success, non-zero on error)
+
+**Example:**
+
+```ylang
+include file;
+file.write_all("output.txt", "Hello, World!");
 ```
 
 ### write(data)

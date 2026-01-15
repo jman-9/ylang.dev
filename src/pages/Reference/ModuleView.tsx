@@ -45,6 +45,7 @@ export default function ModuleView({ moduleName }: ModuleViewProps) {
       time: () => import("/docs/ref/time.md?raw"),
       shell: () => import("/docs/ref/shell.md?raw"),
       fs: () => import("/docs/ref/fs.md?raw"),
+      "builtin-functions": () => import("/docs/ref/builtin-functions.md?raw"),
     };
 
     const loader = moduleMap[moduleName];

@@ -35,7 +35,7 @@ export default function Download() {
     <div className='mt-6'>
       <h3 className='mb-3 font-semibold'>Windows</h3>
       <ol className='list-decimal list-inside pl-4 space-y-2'>
-        <li>Download <a href="https://github.com/jman-9/ylang/releases/latest" className="text-cyan-600 hover:text-cyan-700 hover:underline underline-offset-2 decoration-1 transition-colors" target="_blank" rel="noopener noreferrer">ylang-0.1.2-windows-x64.zip</a> <span className='text-xl text-gray-600 dark:text-gray-400'>(~460 KB)</span></li>
+        <li>Download <a href="https://github.com/jman-9/ylang/releases/download/v0.1.4/ylang-0.1.4-windows-x64.zip" className="text-cyan-600 hover:text-cyan-700 hover:underline underline-offset-2 decoration-1 transition-colors" target="_blank" rel="noopener noreferrer">ylang-0.1.4-windows-x64.zip</a> <span className='text-xl text-gray-600 dark:text-gray-400'>(~515 KB)</span></li>
         <li>Extract the downloaded <code className='bg-gray-100 dark:bg-gray-800 px-1 rounded text-base font-bold'>.zip</code> file</li>
         <li>Navigate to the extracted directory</li>
         <li>Run <code className='bg-gray-100 dark:bg-gray-800 px-1 rounded text-base font-bold'>bin\ylang</code></li>
@@ -50,7 +50,7 @@ export default function Download() {
     <div className='mt-8'>
       <h3 className='mb-3 font-semibold'>Linux</h3>
       <ol className='list-decimal list-inside pl-4 space-y-2'>
-        <li>Download <a href="https://github.com/jman-9/ylang/releases/latest" className="text-cyan-600 hover:text-cyan-700 hover:underline underline-offset-2 decoration-1 transition-colors" target="_blank" rel="noopener noreferrer">ylang-0.1.2-linux-x86_64.tar.gz</a> <span className='text-xl text-gray-600 dark:text-gray-400'>(~418 KB)</span></li>
+        <li>Download <a href="https://github.com/jman-9/ylang/releases/download/v0.1.4/ylang-0.1.4-linux-x86_64.tar.gz" className="text-cyan-600 hover:text-cyan-700 hover:underline underline-offset-2 decoration-1 transition-colors" target="_blank" rel="noopener noreferrer">ylang-0.1.4-linux-x86_64.tar.gz</a> <span className='text-xl text-gray-600 dark:text-gray-400'>(~466 KB)</span></li>
         <li>Extract the downloaded <code className='bg-gray-100 dark:bg-gray-800 px-1 rounded text-base font-bold'>.tar.gz</code> file</li>
         <li>Navigate to the extracted directory</li>
         <li>Run <code className='bg-gray-100 dark:bg-gray-800 px-1 rounded text-base font-bold'>bin/ylang</code></li>
