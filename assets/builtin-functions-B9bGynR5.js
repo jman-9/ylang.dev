@@ -27,7 +27,7 @@ Prints a value to stdout without a trailing newline. If called without arguments
 \r
 \`\`\`ylang\r
 print("Hello");\r
-print(" World\\n");  // Output: Hello World\r
+print(" World");  // Output: Hello World (no newline)\r
 \r
 print(123);  // Output: 123 (no newline)\r
 print();     // Does nothing\r
