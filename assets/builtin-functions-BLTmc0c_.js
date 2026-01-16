@@ -6,12 +6,12 @@ Builtin functions are globally available functions that don't require any module
 \r
 | Function | Description |\r
 |----------|-------------|\r
-| [\`print([value])\`](#printvalue) | Prints a value to stdout without a newline |\r
-| [\`println([value])\`](#printlnvalue) | Prints a value to stdout with a newline |\r
-| [\`eprint([value])\`](#eprintvalue) | Prints a value to stderr without a newline |\r
-| [\`eprintln([value])\`](#eprintlnvalue) | Prints a value to stderr with a newline |\r
+| [\`print([value])\`](#print-value) | Prints a value to stdout without a newline |\r
+| [\`println([value])\`](#println-value) | Prints a value to stdout with a newline |\r
+| [\`eprint([value])\`](#eprint-value) | Prints a value to stderr without a newline |\r
+| [\`eprintln([value])\`](#eprintln-value) | Prints a value to stderr with a newline |\r
 | [\`readln()\`](#readln) | Reads a line from stdin |\r
-| [\`exit([code])\`](#exitcode) | Terminates the program with an optional exit code |\r
+| [\`exit([code])\`](#exit-code) | Terminates the program with an optional exit code |\r
 \r
 ### print([value])\r
 \r
