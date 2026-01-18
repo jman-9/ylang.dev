@@ -134,7 +134,7 @@ m = "12345789".size(); // m <= 9
 `} />
 
     <h2 className='mt-12 mb-4'>Operators</h2>
-    <p><em>ylang</em> is a C-like programming language. So it supports most of C operators.</p>
+    <p><em>ylang</em> is a C-like programming language. So it supports most of C operators with the same precedence.</p>
     <table className="mt-8">
       <thead>
         <tr>
@@ -167,16 +167,21 @@ m = "12345789".size(); // m <= 9
           <td className="pt-2">Bitwise</td>
           <td className="pt-2">{`& | ^ ~ << >>`}</td>
         </tr>
+        <tr>
+          <td className="pt-2">Ternary</td>
+          <td className="pt-2">{`? : `}</td>
+        </tr>
       </tbody>
     </table>
     <CodeBlock code={
-`my_var = 1089 + 911;      // 2000
-my_var -= 1;              // 1999
-my_var++;                 // 2000
-my_var = my_var > 2000;   // false
-my_var = 1 << 4;          // 16
-my_var = true && false;   // false
-my_var = !my_var;         // true`} />
+`my_var = 1089 + 911;         // 2000
+my_var -= 1;                  // 1999
+my_var++;                     // 2000
+my_var = my_var > 2000;       // false
+my_var = 1 << 4;              // 16
+my_var = true && false;       // false
+my_var = !my_var;             // true
+my_var = my_var ? "t" : "f";  // "t"`} />
 
     <h2 className='mt-12 mb-4'>If-Else</h2>
     <p><em>ylang</em> supports conditional statements via If-Else. Its syntax is mostly the same as C.</p>
