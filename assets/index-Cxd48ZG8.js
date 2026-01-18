@@ -119,13 +119,14 @@ line 3
 
 n = str1.size();       // n <= 5
 m = "12345789".size(); // m <= 9
-`}),E.jsx("h2",{className:"mt-12 mb-4",children:"Operators"}),E.jsxs("p",{children:[E.jsx("em",{children:"ylang"})," is a C-like programming language. So it supports most of C operators."]}),E.jsxs("table",{className:"mt-8",children:[E.jsx("thead",{children:E.jsxs("tr",{children:[E.jsx("th",{className:"text-left border-b mb-2",children:"Category"}),E.jsx("th",{className:"text-left border-b mb-2",children:"Operators"})]})}),E.jsxs("tbody",{children:[E.jsxs("tr",{children:[E.jsx("td",{className:"pt-4",children:"Arithmetic"}),E.jsx("td",{className:"pt-4",children:"+ - * / %"})]}),E.jsxs("tr",{children:[E.jsx("td",{className:"pt-2",children:"Assignment"}),E.jsx("td",{className:"pt-2",children:"= +=	-= *= /= %= &= |= ^= >>= <<="})]}),E.jsxs("tr",{children:[E.jsx("td",{className:"pt-2 pr-7",children:"Increment / Decrement"}),E.jsx("td",{className:"pt-2",children:"++ --"})]}),E.jsxs("tr",{children:[E.jsx("td",{className:"pt-2",children:"Comparison"}),E.jsx("td",{className:"pt-2",children:"== != < <= > >="})]}),E.jsxs("tr",{children:[E.jsx("td",{className:"pt-2",children:"Logical"}),E.jsx("td",{className:"pt-2",children:"&& || !"})]}),E.jsxs("tr",{children:[E.jsx("td",{className:"pt-2",children:"Bitwise"}),E.jsx("td",{className:"pt-2",children:"& | ^ ~ << >>"})]})]})]}),E.jsx(tn,{code:`my_var = 1089 + 911;      // 2000
-my_var -= 1;              // 1999
-my_var++;                 // 2000
-my_var = my_var > 2000;   // false
-my_var = 1 << 4;          // 16
-my_var = true && false;   // false
-my_var = !my_var;         // true`}),E.jsx("h2",{className:"mt-12 mb-4",children:"If-Else"}),E.jsxs("p",{children:[E.jsx("em",{children:"ylang"})," supports conditional statements via If-Else. Its syntax is mostly the same as C."]}),E.jsx(tn,{code:`t = true;
+`}),E.jsx("h2",{className:"mt-12 mb-4",children:"Operators"}),E.jsxs("p",{children:[E.jsx("em",{children:"ylang"})," is a C-like programming language. So it supports most of C operators with the same precedence."]}),E.jsxs("table",{className:"mt-8",children:[E.jsx("thead",{children:E.jsxs("tr",{children:[E.jsx("th",{className:"text-left border-b mb-2",children:"Category"}),E.jsx("th",{className:"text-left border-b mb-2",children:"Operators"})]})}),E.jsxs("tbody",{children:[E.jsxs("tr",{children:[E.jsx("td",{className:"pt-4",children:"Arithmetic"}),E.jsx("td",{className:"pt-4",children:"+ - * / %"})]}),E.jsxs("tr",{children:[E.jsx("td",{className:"pt-2",children:"Assignment"}),E.jsx("td",{className:"pt-2",children:"= +=	-= *= /= %= &= |= ^= >>= <<="})]}),E.jsxs("tr",{children:[E.jsx("td",{className:"pt-2 pr-7",children:"Increment / Decrement"}),E.jsx("td",{className:"pt-2",children:"++ --"})]}),E.jsxs("tr",{children:[E.jsx("td",{className:"pt-2",children:"Comparison"}),E.jsx("td",{className:"pt-2",children:"== != < <= > >="})]}),E.jsxs("tr",{children:[E.jsx("td",{className:"pt-2",children:"Logical"}),E.jsx("td",{className:"pt-2",children:"&& || !"})]}),E.jsxs("tr",{children:[E.jsx("td",{className:"pt-2",children:"Bitwise"}),E.jsx("td",{className:"pt-2",children:"& | ^ ~ << >>"})]}),E.jsxs("tr",{children:[E.jsx("td",{className:"pt-2",children:"Ternary"}),E.jsx("td",{className:"pt-2",children:"? : "})]})]})]}),E.jsx(tn,{code:`my_var = 1089 + 911;         // 2000
+my_var -= 1;                  // 1999
+my_var++;                     // 2000
+my_var = my_var > 2000;       // false
+my_var = 1 << 4;              // 16
+my_var = true && false;       // false
+my_var = !my_var;             // true
+my_var = my_var ? "t" : "f";  // "t"`}),E.jsx("h2",{className:"mt-12 mb-4",children:"If-Else"}),E.jsxs("p",{children:[E.jsx("em",{children:"ylang"})," supports conditional statements via If-Else. Its syntax is mostly the same as C."]}),E.jsx(tn,{code:`t = true;
 f = false;
 
 if(f) {
