@@ -7,6 +7,7 @@ const menuItems: MenuItem[] = [
     { label: "str", path: "/str" },
     { label: "list", path: "/list" },
     { label: "dict", path: "/dict" },
+    { label: "bytes", path: "/bytes" },
     { label: "math", path: "/math" },
     { label: "rand", path: "/rand" },
     { label: "sys", path: "/sys" },
@@ -32,6 +33,7 @@ export default function Reference() {
         <Route path="/str" element={<ModuleView moduleName="str" />} />
         <Route path="/list" element={<ModuleView moduleName="list" />} />
         <Route path="/dict" element={<ModuleView moduleName="dict" />} />
+        <Route path="/bytes" element={<ModuleView moduleName="bytes" />} />
         <Route path="/math" element={<ModuleView moduleName="math" />} />
         <Route path="/rand" element={<ModuleView moduleName="rand" />} />
         <Route path="/sys" element={<ModuleView moduleName="sys" />} />

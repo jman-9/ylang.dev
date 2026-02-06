@@ -15,7 +15,9 @@ The `fs` module provides functions for file system operations.
 | [`exists(path)`](#existspath) | Checks if a file or directory exists |
 | [`cwd([path])`](#cwd-path) | Returns the current working directory, or changes it if `path` is provided |
 | [`abspath(path)`](#abspathpath) | Returns the absolute path of a file or directory |
-| [`readdir(path)`](#readdirpath) | Returns a list of entries in the specified directory |
+| [`readdir(path [, recursive])`](#readdirpath-recursive) | Returns a list of entries in the specified directory |
+| [`mkdirs(path)`](#mkdirspath) | Creates the directory and any missing parent directories |
+| [`remove(path)`](#removepath) | Removes a file or empty directory |
 
 ### exists(path)
 
@@ -78,15 +80,16 @@ abs = fs.abspath("data.txt");
 println(abs);  // e.g., "/home/user/data.txt"
 ```
 
-### readdir(path)
+### readdir(path [, recursive])
 
-Returns a list of entries (files and directories) in the specified directory.
+Returns a list of entries in the specified directory. Only regular files are included in the list.
 
 **Parameters:**
 - `path` (`str`): The directory path
+- `recursive` (`bool`, optional): If `true`, walks the directory recursively and lists regular files in subdirectories. Defaults to `false`.
 
 **Returns:**
-- `list`: A list of entry names in the directory
+- `list`: A list of entry paths (as strings). With `recursive` true, paths are full paths to each regular file.
 
 **Example:**
 
@@ -95,6 +98,52 @@ include fs;
 entries = fs.readdir(".");
 for (i = 0; i < entries.size(); i += 1) {
     println(entries[i]);
+}
+
+// Recursive: all regular files under dir
+files = fs.readdir("src", true);
+for (i = 0; i < files.size(); i += 1) {
+    println(files[i]);
+}
+```
+
+### mkdirs(path)
+
+Creates the directory at the given path. If any parent directories do not exist, they are created as well (like `mkdir -p`).
+
+**Parameters:**
+- `path` (`str`): The directory path to create
+
+**Returns:**
+- `bool`: `true` if the directory was created or already exists, `false` on failure
+
+**Example:**
+
+```ylang
+include fs;
+ok = fs.mkdirs("out/logs");
+if (ok) {
+    println("Directory created");
+}
+```
+
+### remove(path)
+
+Removes a file or an empty directory at the given path.
+
+**Parameters:**
+- `path` (`str`): The path to the file or directory to remove
+
+**Returns:**
+- `bool`: `true` if the file or directory was removed, `false` on failure (e.g. non-empty directory, missing path)
+
+**Example:**
+
+```ylang
+include fs;
+ok = fs.remove("temp.txt");
+if (ok) {
+    println("Removed");
 }
 ```
 

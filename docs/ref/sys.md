@@ -99,13 +99,15 @@ Sets the environment variable `name` to `value`.
 - `value` (`str`): The value to set
 
 **Returns:**
-- `int`: Error code (0 on success)
+- `bool`: `true` on success, `false` on failure
 
 **Example:**
 
 ```ylang
 include sys;
-sys.setenv("MY_VAR", "test_value");
-value = sys.getenv("MY_VAR");
-println(value);  // "test_value"
+ok = sys.setenv("MY_VAR", "test_value");
+if (ok) {
+    value = sys.getenv("MY_VAR");
+    println(value);  // "test_value"
+}
 ```

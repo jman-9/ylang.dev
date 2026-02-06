@@ -37,6 +37,7 @@ export default function ModuleView({ moduleName }: ModuleViewProps) {
       str: () => import("/docs/ref/str.md?raw"),
       list: () => import("/docs/ref/list.md?raw"),
       dict: () => import("/docs/ref/dict.md?raw"),
+      bytes: () => import("/docs/ref/bytes.md?raw"),
       math: () => import("/docs/ref/math.md?raw"),
       rand: () => import("/docs/ref/rand.md?raw"),
       sys: () => import("/docs/ref/sys.md?raw"),
